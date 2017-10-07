@@ -39,6 +39,7 @@ def signup():
         user_data = request.form.to_dict()
         user_data.pop('password')
         mongo.add_user(user_data)
+        session['username'] = request.form['username']
 
         return "Congrats on signing up {}!".format(user_data['username'])
 
@@ -53,27 +54,49 @@ def signup():
 
 @app.route('/propose', methods=['GET', 'POST'])
 def propose():
-    if request.method == 'POST':
-        return ("You proposed the following trade to the group:\n"
-                "<p>Symbol: {ticker}\n"
-                "<p>Action: {action}\n"
-                "<p>Type: {type}\n"
-                "<p>Price: {action}\n"
-                "<p>Shares: {shares}\n".format(**request.form.to_dict()))
-
     if 'username' in session:
+
+        if request.method == 'POST':
+            return ("You proposed the following trade to the group:\n"
+                    "<p>Symbol: {ticker}\n"
+                    "<p>Action: {action}\n"
+                    "<p>Type: {type}\n"
+                    "<p>Price: {action}\n"
+                    "<p>Shares: {shares}\n".format(**request.form.to_dict()))
+
         return '''
-            <form method="post">
-                <p><input type=text name=ticker placeholder=Symbol>
-                <p><input type=text name=action placeholder=Action>
-                <p><input type=text name=type placeholder="Order Type">
-                <p><input type=text name=price placeholder="Price">
-                <p><input type=text name=shares placeholder="Number of Shares">
-                <p><input type=submit value=Propose>
-            </form>
+        <form method="post">
+            <p><input type=text name=ticker placeholder=Symbol>
+            <p><input type=text name=action placeholder=Action>
+            <p><input type=text name=type placeholder="Order Type">
+            <p><input type=text name=price placeholder="Price">
+            <p><input type=text name=shares placeholder="Number of Shares">
+            <p><input type=submit value=Propose>
+        </form>
         '''
 
     return 'You must login in order to propose a trade.'
+        
+    
+
+@app.route('/stock', methods=['GET', 'POST'])
+def stock():
+    if 'username' in session:
+        if request.method == 'POST':
+            ticker = str(request.form.to_dict()["ticker"])
+            return ("You requested the following information:\n"
+                    "<p>Symbol: " + ticker + "\n"
+                    "<p>Value: " + str(BlackRock.get_stock_performance_key_val(ticker)))
+
+        return '''
+            <form method="post">
+                <p><input type=text name=ticker placeholder=Symbol>
+                <p><input type=submit value=Info>
+            </form>
+        '''
+
+    return 'You must login in order to request stock info.'
+
 
 
 @app.route('/logout')

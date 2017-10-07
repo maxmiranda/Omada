@@ -53,3 +53,16 @@ class BlackRock(object):
 
         return res.json()
 
+
+    @classmethod
+    def get_stock_performance_key_val(cls, symbol):
+        stock = get_performance_data(symbol)
+        info = stock["resultMap"]["RETURNS"][0]["returnsMap"]
+        pairs = []
+        currentPrice = 100
+        for k,v in info.items():
+            date = float(k)
+            price = float(v["level"]) * currentPrice
+            pairs.append([date, price])
+        return pairs
+
