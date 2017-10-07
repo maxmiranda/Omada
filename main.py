@@ -1,9 +1,9 @@
-from flask import Flask, session, redirect, url_for, escape, request, json
+from flask import Flask, session, redirect, url_for, escape, request, json, render_template
 
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='html/', static_folder='static/', static_url_path='')
 
 # Create instance of MongoDB client.
 mongo = funcs.connect_db()
@@ -11,12 +11,15 @@ mongo = funcs.connect_db()
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
     if 'username' in session:
-        return 'Logged in as {}'.format(escape(session['username']))
+        return ('<p>Logged in as {}</p>'.format(escape(session['username']))
+                + "<a href='/propose'><input type=button value='Propose a trade'></a>")
     return 'You are not logged in'
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         if mongo.find_user(request.form['username']):
@@ -65,7 +68,9 @@ def propose():
                     "<p>Action: {action}\n"
                     "<p>Type: {type}\n"
                     "<p>Price: {action}\n"
-                    "<p>Shares: {shares}\n".format(**request.form.to_dict()))
+                    "<p>Shares: {shares}\n</p>"
+                    "<a href='/'><input type=button value=Home></a>"
+                    "".format(**request.form.to_dict()))
 
         return '''
         <form method="post">
