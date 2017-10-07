@@ -9,7 +9,6 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return 'asdfsa'
     if request.method == 'POST':
         session['username'] = request.form['username']
         return redirect(url_for('index'))
