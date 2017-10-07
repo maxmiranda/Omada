@@ -32,6 +32,44 @@ def login():
     '''
 
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        user_data = request.form.to_dict()
+        user_data.pop('password')
+        mongo.add_user(user_data)
+
+        return "Congrats on signing up {}!".format(user_data['username'])
+
+    return '''
+        <form method="post">
+            <p><input type=text name=username placeholder=Username>
+            <p><input type=password name=password placeholder=Password>
+            <p><input type=submit value=Login>
+        </form>
+    '''
+
+
+@app.route('/propose', methods=['GET', 'POST'])
+def propose():
+    if request.method == 'POST':
+        return request.form.__dir__
+
+    if 'username' in session:
+        return '''
+            <form method="post">
+                <p><input type=text name=ticker placeholder=Symbol>
+                <p><input type=text name=action placeholder=Action>
+                <p><input type=text name=type placeholder="Order Type">
+                <p><input type=text name=price placeholder="Price">
+                <p><input type=text name=shares placeholder="Number of Shares">
+                <p><input type=submit value=Propose>
+            </form>
+        '''
+
+    return 'You must login in order to propose a trade.'
+
+
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
@@ -41,8 +79,7 @@ def logout():
 
 # set the secret key.  keep this really secret:
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-####  
-
+####
 
 
 if __name__ == '__main__':
