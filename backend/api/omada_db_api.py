@@ -28,7 +28,7 @@ class OmadaDB(object):
     def find_user(self, user: str):
         """Return user information from users collection"""
 
-        return self.users.find_one({"user": user})
+        return self.users.find_one({"username": user})
 
 
     def get_stocks(self, stock_id: str):
