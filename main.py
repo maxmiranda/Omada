@@ -26,7 +26,8 @@ def login():
 
     return '''
         <form method="post">
-            <p><input type=text name=username>
+            <p><input type=text name=username placeholder=Username>
+            <p><input type=password name=password placeholder=Password>
             <p><input type=submit value=Login>
         </form>
     '''
@@ -53,7 +54,12 @@ def signup():
 @app.route('/propose', methods=['GET', 'POST'])
 def propose():
     if request.method == 'POST':
-        return request.form.__dir__
+        return ("You proposed the following trade to the group:\n"
+                "<p>Symbol: {ticker}\n"
+                "<p>Action: {action}\n"
+                "<p>Type: {type}\n"
+                "<p>Price: {action}\n"
+                "<p>Shares: {shares}\n".format(**request.form.to_dict()))
 
     if 'username' in session:
         return '''
