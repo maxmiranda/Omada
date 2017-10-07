@@ -3,7 +3,7 @@ from flask import Flask, session, redirect, url_for, escape, request, json, rend
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
 
-app = Flask(__name__, template_folder='frontend_omada/', static_folder='static/', static_url_path='')
+app = Flask(__name__, template_folder='html/', static_folder='static/', static_url_path='')
 
 # Create instance of MongoDB client.
 mongo = funcs.connect_db()
