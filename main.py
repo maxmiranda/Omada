@@ -7,8 +7,7 @@ def index():
         return 'Logged in as %s' % escape(session['username'])
     return 'You are not logged in'
 
-# @app.route('/login', methods=['GET', 'POST'])
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     return 'asdfsa'
     if request.method == 'POST':
