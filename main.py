@@ -7,10 +7,10 @@ def index():
         return 'Logged in as %s' % escape(session['username'])
     return 'You are not logged in'
 
-
-####
-@app.route('/login', methods=['GET', 'POST'])
+# @app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
+    return 'asdfsa'
     if request.method == 'POST':
         session['username'] = request.form['username']
         return redirect(url_for('index'))
