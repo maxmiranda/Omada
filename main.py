@@ -17,7 +17,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        if mongo.find_user({"user": request.form['username']}):
+        if mongo.find_user({"username": request.form['username']}):
             session['username'] = request.form['username']
         else:
             return "Invalid Username"
