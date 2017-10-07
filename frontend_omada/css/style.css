@@ -60,21 +60,18 @@ button {
   outline: medium none;
   color: #4FC1F0;
 }
-.capitalize {
-    text-transform: capitalize;
-}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Hirogina Sans', sans-serif;
   font-weight: normal;
   color: #232332;
   margin-top: 0px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 200;
   letter-spacing: 1px;
 }
 h1 a,
@@ -406,14 +403,14 @@ textarea {
 
 .blue_page {
   background-color: #2494F0;
-  height: 612px;
+  height:620px;
+  width: 100%;
   margin-top: -25px;
-  
 }
 
 #centeredtext {
   text-align: center;
-  margin-top: 120px;
+  margin-top: 90px;
 }
 
 #main_text {
@@ -440,16 +437,61 @@ textarea {
   margin-bottom: 50px;
   color: #E8E8E8;
 }
+.sign {
+  font-family: Lato !important;
+  font-weight: 200px !important;
 
-a .signin {
-  float: right;
+}
+#signin {
+  margin-left: 85%;
+  margin-top: 2%;
+  font-size: 18px !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
 
 }
 
-a .signup {
-  font-family: Lato;
+#signup {
+  font-size: 20px !important;
+  padding-left:20px !important;
+  padding-right:20px !important;
 
 }
+
+#bottom_home {
+  height: 500px;
+  width: 100%
+}
+
+.iconbox  {
+  height: 350px;
+  margin-top: 60px;
+  padding: 28px;
+  background-color: #FFFFFF;
+}
+
+.big_word {
+  font-size: 35px;
+  font-weight: 200px;
+  text-align: center;
+  margin-top: 0px;
+  font-family: Hiragino Sans;
+}
+
+.icon {
+  height: 80px;
+  width: 80px;
+  margin-left: 30%;
+  margin-bottom: 10%;
+}
+
+.description {
+  text-align: center;
+  font-size: 25px;
+  font-family: Hiragino Sans;
+}
+
+
 
 /*-------------------------------------------------------
     7. SIGN IN PAGE
@@ -547,3 +589,40 @@ display: table;
 .white-bg { background: #E8E8E8; }
 .gray-bg { background: #f6f6f6; }
 .transparent-bg { background: transparent; }
+
+
+/*-------------------------------------------------------
+    FOOTER
+---------------------------------------------------------*/
+footer {
+ background-color: #353232;
+ width: 100%;
+ color: #eeeeee;
+ font-family: Raleway;
+ font-size: 12px;
+ clear: both;
+
+}
+
+.wholecontact {
+ float:right;
+ width: 70%;
+}
+
+#footertext {
+  padding-top: 17px;
+  color: #eeeeee;
+}
+.contactfooter {
+   font-family: Raleway;
+   font-size: 15px;
+   color: #9DC5D8;
+   display:inline-block;
+   width:25%;
+   text-align:center;
+   float:right;
+}
+
+.footer p {
+  padding-top: 15px;
+}
