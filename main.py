@@ -1,6 +1,7 @@
-from backend import funcs
-
 from flask import Flask, session, redirect, url_for, escape, request
+
+from backend import funcs
+from backend.api.black_rock_api import BlackRock
 app = Flask(__name__)
 
 # Create instance of MongoDB client.
