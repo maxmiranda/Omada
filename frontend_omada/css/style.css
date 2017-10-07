@@ -459,13 +459,13 @@ textarea {
 }
 
 #bottom_home {
-  height: 500px;
-  width: 100%
+  width: 100%;
 }
 
 .iconbox  {
   height: 350px;
   margin-top: 60px;
+  margin-bottom: 60px;
   padding: 28px;
   background-color: #FFFFFF;
 }
