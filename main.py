@@ -17,7 +17,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        if mongo.find_user(request.form['username']):
+        if mongo.find_user({"user": request.form['username']}):
             session['username'] = request.form['username']
         else:
             return "Invalid Username"
@@ -40,7 +40,8 @@ def signup():
         user_data.pop('password')
         mongo.add_user(user_data)
 
-        return "Congrats on signing up {}!".format(user_data['username'])
+        return ("<p>Congrats on signing up {}!</p>".format(user_data['username'])
+                + "<a href='/login'><input type=button value='Login'></a>")
 
     return '''
         <form method="post">
