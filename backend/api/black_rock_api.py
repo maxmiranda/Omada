@@ -55,7 +55,14 @@ class BlackRock(object):
 
 
     @classmethod
-    def get_stock_performance_key_val(cls, symbol):
+    def get_historical_prices(cls, symbol):
+        """
+        Args:
+            string of ticker symbol
+        return:
+            list of tuples (unix date, price)
+        """
+
         stock = BlackRock.get_performance_data(symbol)
         info = stock["resultMap"]["RETURNS"][0]["returnsMap"]
         pairs = []

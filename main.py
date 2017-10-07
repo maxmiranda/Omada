@@ -1,4 +1,4 @@
-from flask import Flask, session, redirect, url_for, escape, request
+from flask import Flask, session, redirect, url_for, escape, request, json
 
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
@@ -86,9 +86,11 @@ def stock():
     if 'username' in session:
         if request.method == 'POST':
             ticker = str(request.form.to_dict()["ticker"])
-            return ("You requested the following information:\n"
-                    "<p>Symbol: " + ticker + "\n"
-                    "<p>Value: " + str(BlackRock.get_stock_performance_key_val(ticker)))
+            info = BlackRock.get_historical_prices(ticker)
+            return json.dumps({
+                'ticker': ticker,
+                'info': info
+            })
 
         return '''
             <form method="post">
