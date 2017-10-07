@@ -2,6 +2,7 @@ from flask import Flask, session, redirect, url_for, escape, request, json
 
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
+
 app = Flask(__name__)
 
 # Create instance of MongoDB client.
@@ -11,14 +12,14 @@ mongo = funcs.connect_db()
 @app.route('/')
 def index():
     if 'username' in session:
-        return 'Logged in as %s' % escape(session['username'])
+        return 'Logged in as {}'.format(escape(session['username']))
     return 'You are not logged in'
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        if mongo.find_user({"username": request.form['username']}):
+        if mongo.find_user(request.form['username']):
             session['username'] = request.form['username']
         else:
             return "Invalid Username"

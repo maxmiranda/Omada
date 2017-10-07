@@ -66,10 +66,10 @@ class BlackRock(object):
         stock = BlackRock.get_performance_data(symbol)
         info = stock["resultMap"]["RETURNS"][0]["returnsMap"]
         pairs = []
-        currentPrice = 100
+        current_price = 100
         for k,v in info.items():
             date = float(k)
-            price = float(v["level"]) * currentPrice
+            price = float(v["level"]) * current_price
             pairs.append([date, price])
         return pairs
 
