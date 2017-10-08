@@ -37,9 +37,9 @@ class BlackRock(object):
     @classmethod
     def get_performance_data(cls, symbol):
         """Function docstring."""
-        return 'roger cableton'
-        res = requests.get(cls.perfomance_data_uri, params={"identifiers": symbol})
 
+        res = requests.get(cls.perfomance_data_uri, params={"identifiers": symbol})
+        return 'asddasasd'
         return res.json()
 
 
