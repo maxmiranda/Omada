@@ -48,16 +48,14 @@
     <!-- MENU END -->
 
     <div class = "container" id = "proposals">
-      <!-- MOST RECENT PROP START -->
-      <p id = "first_item" class = "make_proposal_button"> Make a Proposal </p>
+      <a onClick = "document.getElementById('proposal-modal').classList.remove('hidden');"class = "make_proposal_button"> Make a Proposal </a>
       <h3 id = "first_item"> Most Recent Proposal </h3>
-
+      <!-- MOST RECENT PROP START -->
       <div class = "proposal most_recent_prop"> <!--Maybe do 6 columns for each side  -->
-
         <div class = "prop_headline">
           <h2 class = "prop_stock_ticker"> AAPL </h2>
           <h2 class = "stock_price"> $155.30 </h3>
-          <h2 class = "daily_change"> (-.09)</h3>
+          <h2 class = "red daily_change"> (-.09)</h3>
         </div>
 
         <div class = "three columns order_categories first_col">
@@ -86,10 +84,13 @@
           <h6 id = "num_yes"> 2 Yes | <span id = "num_no"> 0 No </span> </h6>
           </div>
           <div class = "prop_icons">
-            <button class = "checkmark"> <img class = "prop_icon" src = "{{ url_for('static', filename='img/checkmark.png') }}"> </button>
-            <button class = "red_ex"> <img class = "prop_icon" src = "{{ url_for('static', filename='img/exmark.png') }}"> </button>
+            <button class = "checkmark">
+              <img class = "prop_icon" src = "{{ url_for('static', filename='img/checkmark.png') }}">
+            </button>
+            <button class = "red_ex">
+              <img class = "prop_icon" src = "{{ url_for('static', filename='img/exmark.png') }}">
+            </button>
           </div>
-
       </div>
 
       <h3 id = "more_prop_label"> More Proposals </h3>
@@ -97,7 +98,7 @@
         <div class = "proposal">
           <h2 class = "prop_stock_ticker"> MSFT </h2>
           <h2 class = "stock_price"> $76.00 </h3>
-          <h2 class = "daily_change"> (+.09)</h3>
+          <h2 class = "green daily_change"> (+.09)</h3>
           <h6> Buy </h6>
           <h6> Limit</h6>
           <h6> $156.05</h6>
@@ -111,7 +112,7 @@
         <div class = "proposal">
           <h2 class = "prop_stock_ticker"> BLK </h2>
           <h2 class = "stock_price"> $155.30 </h3>
-          <h2 class = "red_daily_change"> (-1.21)</h3>
+          <h2 class = "red daily_change"> (-1.21)</h3>
           <h6> Buy </h6>
           <h6> Limit</h6>
           <h6> $156.05</h6>
@@ -121,21 +122,30 @@
           <h6> 2 Yes </h6>
           <h6> 0 No </h6>
         </div>
-
       </div>
     </div>
 
-      <!-- FOOTER -->
-      <footer>
-        <div class = "container1">
-          <div class = "five columns">
-                <p id = "footertext">
-                        Omada Investing ©  2017  |   <u> <a style = "color: #fcfcfc; cursor: pointer" href = "mailto:danielandrews@berkeley.edu"> Contact Us </a> </u><br> <br>
-                        2430 Piedmont Ave, Berkeley, Ca 94720
-                </p>
-          </div>
+    <div class="modal hidden" id="proposal-modal">
+        <div class="wrapper">
+            <form class="content" action="/proposal" method="post">
+                <div>
+                    <b>Stock Ticker</b>
+                    <input class="input" type="text" name="ticker" placeholder="AAPL">
+                </div>
+                <div>
+                    <b>Buy or Sell?</b>
+                    <select class = "input" type = "buy_or_sell" name = "buy_or_sell">
+                      <option value="Buy">Buy</option>
+                      <option value="Sell">Sell</option>
+                    </select>
+                </div>
+                <div>
+                    <b>Number of Shares</b>
+                    <input class="input" type="text" name="number" placeholder="2">
+                </div>
+                    <input type="submit" value="Place Order">
+            </form>
         </div>
-      </footer>
-      <!-- END FOOTER -->
+    </div>
   </body>
 </html>
