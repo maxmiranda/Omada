@@ -68,11 +68,11 @@ def proposals():
 def groups():
     return render_template('groups.html')
 
-@app.route('/vote', methods=["POST"])
+@app.route('/vote', methods=['GET', 'POST'])
 def vote():
     if request.method == 'POST':
-        return 'here at least'
         stock_id = request.form['id']
+        return stock_id
         buy = request.form['buy']
         approve = request.form['approve']
         return mongo.vote(stock_id, buy, approve)
