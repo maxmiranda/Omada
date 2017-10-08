@@ -113,9 +113,9 @@ def stock():
 def nasdaq():
     return simulate_data('GOOG')
 
-@app.route('/live', methods=['GET', 'POST'])
-def live():
-    return render_template('stock_live.html')
+# @app.route('/live', methods=['GET', 'POST'])
+# def live():
+#     return render_template('stock_live.html')
 
 
 @app.route('/logout')
