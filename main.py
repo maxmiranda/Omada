@@ -88,6 +88,7 @@ def stock():
     if request.method == 'POST':
         ticker = 'aapl'
         info = BlackRock.get_historical_prices(ticker)
+        return info
         return json.dumps({
             'ticker': ticker,
             'info': info
@@ -100,6 +101,8 @@ def stock():
                 <p><input type=submit value=Info>
             </form>
         '''
+
+import requests
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
