@@ -64,6 +64,7 @@ class BlackRock(object):
         """
 
         stock = cls.get_performance_data(symbol)
+        return 'a word'
         info = stock["resultMap"]["RETURNS"][0]["returnsMap"]
         pairs = []
         current_price = 100
