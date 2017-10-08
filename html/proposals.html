@@ -20,7 +20,7 @@
             <ul>
               <li><a href="/groups">Group   </a></li>
               <li><a id = "selected_menu_item" href="/">Proposals   </a></li>
-              <li><a href="/portfolio">Portfolio   </a></li>
+              <li><a href="/live">Live   </a></li>
               <li><a href="/account">Account   </a></li>
               <li><a href = "/search"> <img class = "invert" id = "searchglass"src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
             </ul>
@@ -145,7 +145,7 @@
             <form class="content" action="/proposal" method="post">
                 <div>
                     <b>Stock Ticker</b>
-                    <input class="input" type="text" name="ticker" placeholder="AAPL">
+                    <input class="input" type="text" name="ticker" placeholder="TICKER">
                 </div>
                 <div>
                     <b>Buy or Sell?</b>
@@ -156,7 +156,7 @@
                 </div>
                 <div>
                     <b>Number of Shares</b>
-                    <input class="input" type="text" name="number" placeholder="2">
+                    <input class="input" type="text" name="number" placeholder="NUMBER">
                 </div>
                     <input type="submit" value="Place Order">
             </form>
