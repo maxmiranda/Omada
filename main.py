@@ -82,14 +82,13 @@ def propose():
 def proposals():
     return render_template('proposals.html')
 
-
+@app.route('/fuckyou', methods=['GET'])
 def fuckyou():
     import requests
     return str(requests.get("https://www.blackrock.com/tools/hackathon/performance?identifiers=GOOG"))
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
-    fuckyou()
     if request.method == 'POST':
         ticker = 'aapl'
         info = BlackRock.get_historical_prices(ticker)
