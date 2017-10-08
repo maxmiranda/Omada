@@ -85,7 +85,6 @@ def proposals():
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
-    return 'asd'
     return request.method
     if request.method == 'POST':
         ticker = 'aapl'
