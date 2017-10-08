@@ -625,6 +625,7 @@ display: table;
 #proposals h6 {
   font-family: Roboto;
   font-size: 20px;
+  margin-bottom:17px;
 }
 
 .most_recent_prop {
@@ -637,6 +638,13 @@ display: table;
   margin-left: 55px;
   margin-top: 22px;
   float:left;
+}
+.prop_headline .stock_price {
+  line-height: 1.6;
+}
+
+.prop_headline .daily_change {
+  line-height: 1.9;
 }
 .prop_headline h2 {
   float: left;
@@ -678,7 +686,7 @@ display: table;
 }
 
 .more_proposals .prop_stock_ticker {
-  margin-top: 20px;
+  margin-top: 16px;
   margin-left: 13px
 }
 
