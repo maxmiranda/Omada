@@ -55,4 +55,5 @@ class OmadaDB(object):
 
         self.vote("1","1","1")
         stock = self.get_stocks(stock_id)
-        return vars(stock)
+        # return vars(stock)
+        return 1
