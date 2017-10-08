@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>portfolio</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
+    <style>
+      .container-ticker{
+        display: flex;
+        border: solid;
+        border-color: #54AAF0;
+        border-width: .5px;
+        border-radius: 4px;
+        clear:both;
+
+        margin-left: 15%;
+        margin-bottom: 2%;
+        width: 70%;
+      }
+      .container-ticker div{
+        padding:10px;
+
+        padding-top: 1px;
+        padding-bottom: 1px;
+      }
+
+      .container-header {
+        display: flex;
+        margin-left: 15%;
+        margin-bottom: 1px;
+        width: 70%;
+      }
+
+      .tickers {
+        flex:1;
+        font-family: "Raleway";
+        font-weight: bolder;
+      }
+
+      .investment-info {
+        flex:1;
+        font-family: "Raleway";
+        font-weight: 100;
+        white-space: nowrap;
+      }
+
+      .larg-hold {
+        flex:1;
+        font-family: "Raleway";
+        font-weight: bolder;
+        margin-left: 15%;
+        margin-top: 2%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- MENU -->
+    <div class="header">
+      <h1 class = "logo">Omada</h1>
+        <div class = "nav">
+          <div class="regular_menu">
+            <ul>
+              <li><a href="/groups">Group   </a></li>
+              <li><a href="/proposals">Proposals   </a></li>
+              <li><a id = "selected_menu_item" href="#">Portfolio   </a></li>
+              <li><a href="/account">Account   </a></li>
+              <li><a href = "/search"> <img class = "invert" id = "searchglass"src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
+            </ul>
+          </div>
+            <div class="dropdown_menu" onclick="drop(this)">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Group</a>
+                <a id = "selected_menu_item" href="#about">Proposals</a>
+                <a href="#contact">Portfolio</a>
+                <a href="#contact">Account</a>
+              </div>
+          </div>
+        </div>
+          <script>
+          function drop(x) {
+            x.classList.toggle("change");
+            document.getElementById("myDropdown").classList.toggle("show");
+          }
+        </script>
+    </div>
+    <!-- MENU -->
+    <div class="larg-hold">Largest Holdings</div>
+    <div class="container-header">
+      <div class="tickers">
+        <p></p>
+      </div>
+      <div class="investment-info">
+        <p>Last Price</p>
+      </div>
+      <div class="investment-info">
+        <p>% of shares</p>
+      </div>
+      <div class="investment-info">
+        <p>shares</p>
+      </div>
+      <div class="investment-info">
+        <p>price</p>
+      </div>
+      <div class="investment-info">
+        <p>personal profit</p>
+      </div>
+    </div>
+      <div class="container-ticker">
+        <div class="tickers">
+          <p class='ticker'>BLK</p>
+        </div>
+        <div class="investment-info">
+          <p>$463.00 <span style="color:red;">(-1.21)</span></p>
+        </div>
+        <div class="investment-info">
+          <p>28%</p>
+        </div>
+        <div class="investment-info">
+          <p>2</p>
+        </div>
+        <div class="investment-info">
+          <p>$926.00</p>
+        </div>
+        <div class="investment-info">
+          <p><span style="color:green;">+$76.44</span></p>
+        </div>
+      </div>
+
+      <div class="container-ticker">
+        <div class="tickers">
+          <p class='ticker'>MSFT</p>
+        </div>
+        <div class="investment-info">
+          <p>$76.10 <span style="color:green;">(+0.09)</span></p>
+        </div>
+        <div class="investment-info">
+          <p>28%</p>
+        </div>
+        <div class="investment-info">
+          <p>10</p>
+        </div>
+        <div class="investment-info">
+          <p>$761.00</p>
+        </div>
+        <div class="investment-info">
+          <p><span style="color:green;">+$18.97</span></p>
+        </div>
+
+      </div>
+      <div class="container-ticker">
+        <div class="tickers">
+          <p class='ticker'>TSLA</p>
+        </div>
+        <div class="investment-info">
+          <p>$356.88 <span style="color:green;">(+1.55)</span></p>
+        </div>
+        <div class="investment-info">
+          <p>28%</p>
+        </div>
+        <div class="investment-info">
+          <p>3</p>
+        </div>
+        <div class="investment-info">
+          <p>$1070.64</p>
+        </div>
+        <div class="investment-info">
+          <p><span style="color:green;">+$8.88</span></p>
+        </div>
+      </div>
+
+      <div id="container" style="width: 500px;height: 500px;margin-left:25%;"></div>
+
+      <script>
+        $('.ticker').on('click', function(e) {
+          console.log(e);
+          graph(e.target.outerText);
+        });
+
+        var graph = function(ticker){
+          jQuery.get("https://www.blackrock.com/tools/hackathon/performance", {"identifiers": ticker},
+           function(res) {
+            console.log(res["resultMap"]);
+
+              info = res["resultMap"]["RETURNS"][0]["returnsMap"];
+              pairs = [];
+              current_price = 100/58.0;
+              for (var key in info) {
+                  var date = key.substring(4,6) + '/' + key.substring(6,8) + '/' + key.substring(0,4);
+                  var date = Date.parse(date);
+                  var price = parseFloat(info[key]["level"]) * current_price;
+                  pairs.push([date, price]);
+              }
+
+              Highcharts.stockChart('container', {
+
+
+                  rangeSelector: {
+                      selected: 1
+                  },
+
+                  title: {
+                      text: ticker.toUpperCase() + ' Stock Price'
+                  },
+
+                  series: [{
+                      name: ticker,
+                      data: pairs,
+                      tooltip: {
+                          valueDecimals: 2
+                      }
+                  }]
+              });
+          });
+        }
+
+      </script>
+  </body>
+</html>
