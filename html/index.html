@@ -1,136 +1,65 @@
-<!doctype html>
-
-    <head>
-        <!-- FAVICON -->
-        <link rel="icon" href="favicon.png">
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <title>Omada</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- ALL CSS FILES -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-
-        <!-- MODERNIZE JS -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
-        <!-- JQUERY -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
-    </head>
-
-    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-        <!--  Item PRELOADER AREA -->
-        <div id="preloader-wrapper">
-            <div class="preloader-wave-effect"></div>
-        </div>
-        <!-- Item PRELOADER AREA END -->
-        <div class="content-wrapper fixed-footer-content">
-          <!-- BLUE BODY -->
-          <div class="blue_page" class=" .u-max-full-width">
-              <!-- SIGN IN -->
-              <a id = "signin" class="button button-primary sign" onclick="document.getElementById('id01').style.display='block'">Sign In</a>
-              <div id="id01" class="modal">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                <form class="modal-content animate" action="/action_page.php" onsubmit="myFunction()">
-                <div class="signup_container">
-                    <label><b>Username</b></label>
-                      <input required class="form-item" id='username' type="text" placeholder="Enter Username" name="username" >
-                    <label><b>Password</b></label>
-                      <input required type="password" placeholder="Enter Password" name="psw" required>
-                    <input type="checkbox" checked="checked"> Remember me
-                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                  </div>
-                <div class="clearfix">
-                  <button type="submit" class="signupbtn">Sign Up</button>
-                </div>
-                  <script>
-                    function myFunction() {
-                      alert("Submitted! Join a group and start investing!");
-                      window.location.href="#";
-                    }
-                  </script>
-              </div>
-              <!-- END SIGN IN -->
-              <div id = "centeredtext"> <!-- Add  Skel to this-->
-                <h1 id="main_text">Omada</h1>
-                <h2 id="middle_text">Group Investing Made Simple</h2>
-                <h3 id="bottom_text">Create portfolios with friends in Omada</h3>
-                <a id = "signup" class="button button-primary sign" onclick="document.getElementById('id01').style.display='block'">Sign Up</a>
-                <!-- SIGN UP -->
-                <div id="id02" class="modal">
-                  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
-                  <form class="modal-content animate" action="/action_page.php" onsubmit="myFunction()">
-                  <div class="signup_container">
-                      <label><b>Email</b></label>
-                        <input required class="form-item" id='email' type="text" placeholder="Enter Email" name="email" >
-                      <label><b>Username</b></label>
-                        <input required class="form-item" id='username' type="text" placeholder="Enter Username" name="username" >
-                      <label><b>Password</b></label>
-                        <input required type="password" placeholder="Enter Password" name="psw" required>
-                      <label><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                      <input type="checkbox" checked="checked"> Remember me
-                      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                    </div>
-                  <div class="clearfix">
-                    <button type="submit" class="signupbtn">Sign Up</button>
-                  </div>
-                    <script>
-                      function myFunction() {
-                        alert("Submitted! Join a group and start investing!");
-                        window.location.href="#";
-                      }
-                    </script>
-                </div>
-                  <!-- END SIGN UP -->
-                </div>
-          </div>
-          <!-- START MAIN CONTENT AREA -->
-          <div id = "bottom_home" class = "white-bg">
-            <div class = "container">
-              <div class = "twelve columns clearfix">
-                <div class = "four columns iconbox propose">
-                  <h1 class = "big_word"> Propose</h1>
-                  <img class = "icon" src = "{{ url_for('static', filename='img/propose.png') }}">
-                  <p class = "description"> Propose ideas to your group </p>
-                </div>
-                <div class = "four columns iconbox invest">
-                  <h1 class = "big_word"> Invest</h1>
-                  <img class = "icon" src = "{{ url_for('static', filename='img/invest.png') }}">
-                  <p class = "description"> Vote on proposals and invest</p>
-                </div>
-                <div class = "four columns iconbox profit">
-                  <h1 class = "big_word"> Profit</h1>
-                  <img class = "icon" src = "{{ url_for('static', filename='img/profit.png') }}">
-                  <p class = "description"> Cash out together, earn together!</p>
-                </div>
-              </div>
-
-          </div>
-                <!-- END OF MAIN CONTENT AREA -->
-        </div>
-
-        <!-- FOOTER -->
-        <footer>
-          <div class = "container">
-      			<div class = "five columns">
-      				    <p id = "footertext">
-      					          Omada Investing ©  2017  |   <u> <a style = "color: #fcfcfc; cursor: pointer" href = "mailto:danielandrews@berkeley.edu"> Contact Us </a> </u><br> <br>
-      					          2430 Piedmont Ave, Berkeley, Ca 94720
-      				    </p>
+<html>
+<head>
+    <title>Omada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+</head>
+<body>
+    <button class="signin" onclick="document.getElementById('signin-modal').classList.remove('hidden');">Sign In</button>
+    <div class="one">
+        <h1>Omada</h1>
+        <h2>Group Investing Made Simple</h2>
+        <h3>Create portfolios with friends in Omada</h3>
+        <button class="signup" onclick="document.getElementById('signup-modal').classList.remove('hidden');">Sign Up</button>
+    </div>
+    <div class="two">
+        <div class="containers">
+            <div class="container">
+                <h3>Propose</h3>
+                <img src="{{ url_for('static', filename='img/propose.png') }}">
+                <p>Propose ideas to your group</p>
             </div>
-      		</div>
-      	</footer>
-        <!-- END FOOTER -->
-        <!-- ALL JS HERE -->
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-
-    </body>
+            <div class="container">
+                <h3>Invest</h3>
+                <img src="{{ url_for('static', filename='img/invest.png') }}">
+                <p>Vote on proposals and invest</p>
+            </div>
+            <div class="container">
+                <h3>Profit</h3>
+                <img src="{{ url_for('static', filename='img/profit.png') }}">
+                <p>Cash out together, earn together!</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal hidden" id="signup-modal">
+        <div class="wrapper">
+            <form class="content" action="/signup" method="post">
+                <div>
+                    <b>Username</b>
+                    <input class="input" type="text" name="username" placeholder="Username">
+                </div>
+                <div>
+                    <b>Password</b>
+                    <input class="input" type="password" name="password" placeholder="Password">
+                </div>
+                <input class="submit" type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
+    <div class="modal hidden" id="signin-modal">
+        <div class="wrapper">
+            <form class="content" action="/login" method="post">
+                <div>
+                    <b>Username</b>
+                    <input class="input" type="text" name="username" placeholder="Username">
+                </div>
+                <div>
+                    <b>Password</b>
+                    <input class="input" type="password" name="password" placeholder="Password">
+                </div>
+                <input class="submit" type="submit" value="Sign In">
+            </form>
+        </div>
+    </div>
+</body>
 </html>

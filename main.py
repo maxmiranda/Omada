@@ -18,7 +18,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/login/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
         redirect(url_for('index')) 
