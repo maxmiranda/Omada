@@ -46,29 +46,11 @@ def signup():
     return redirect(url_for('groups'))
 
 
-@app.route('/propose', methods=['GET', 'POST'])
-def propose():
+@app.route('/proposal', methods=['POST'])
+def proposal():
     if 'username' in session:
-        if request.method == 'POST':
-            return ("You proposed the following trade to the group:\n"
-                    "<p>Symbol: {ticker}\n"
-                    "<p>Action: {action}\n"
-                    "<p>Type: {type}\n"
-                    "<p>Price: {action}\n"
-                    "<p>Shares: {shares}\n</p>"
-                    "<a href='/'><input type=button value=Home></a>"
-                    "".format(**request.form.to_dict()))
-
-        return '''
-        <form method="post">
-            <p><input type=text name=ticker placeholder=Symbol>
-            <p><input type=text name=action placeholder=Action>
-            <p><input type=text name=type placeholder="Order Type">
-            <p><input type=text name=price placeholder="Price">
-            <p><input type=text name=shares placeholder="Number of Shares">
-            <p><input type=submit value=Propose>
-        </form>
-        '''
+        mongo.add_proposal(request.form.to_dict())
+        return redirect(url_for('proposals'))
 
     return 'You must login in order to propose a trade.'
 
