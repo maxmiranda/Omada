@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
+    <script>
+
+        jQuery.get("http://omada.azurewebsites.net/nasdaq",
+            function(res) {
+
+                Highcharts.stockChart('container', {
+
+
+                    rangeSelector: {
+                        selected: 1
+                    },
+
+                    title: {
+                        text: 'GOOG Stock Price'
+                    },
+
+                    series: [{
+                        name: 'GOOG',
+                        data: res,
+                        tooltip: {
+                            valueDecimals: 2
+                        }
+                    }]
+                });
+            });
+          }
+
+    </script>
+</head>
+    <div id="container" style="width: 500px;height: 500px;"></div>
+<body>
+
+</body>
+</html>

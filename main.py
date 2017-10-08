@@ -2,6 +2,7 @@ from flask import Flask, session, redirect, url_for, escape, request, json, rend
 
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
+import nasdaq_api
 
 app = Flask(__name__, template_folder='html/', static_folder='static/', static_url_path='')
 
@@ -107,6 +108,10 @@ def stock():
         })
 
     return redirect(url_for('index'))
+
+@app.route('/nasdaq', methods=['GET', 'POST'])
+def nasdaq():
+    return simulate_data('GOOG')
 
 
 @app.route('/logout')

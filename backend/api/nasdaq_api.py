@@ -42,9 +42,10 @@ class Nasdaq(object):
         threading.Thread(target=run).start()
 
 
-def simulate_data(symbol, callback):
+def simulate_data(symbol):
     data = Nasdaq(symbol).mock_data
+    pairs = []
     for line in data:
         line = json.loads(line)
-        callback([line["DateStamp"], line["LastSale"]])
-        time.sleep(1.5)
+        pairs.append([line["DateStamp"], line["LastSale"]])
+    return pairs
