@@ -46,5 +46,5 @@ def simulate_data(symbol, callback):
     data = Nasdaq(symbol).mock_data
     for line in data:
         line = json.loads(line)
-        callback([line["LastSale"], line["DateStamp"]])
+        callback([line["DateStamp"], line["LastSale"]])
         time.sleep(1.5)
