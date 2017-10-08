@@ -14,8 +14,7 @@ mongo = funcs.connect_db()
 @app.route('/')
 def index():
     if 'username' in session:
-        return ('<p>Logged in as {}</p>'.format(escape(session['username']))
-                + "<a href='/propose'><input type=button value='Propose a trade'></a>")
+        return redirect(url_for('groups'))
 
     return render_template('index.html')
 
