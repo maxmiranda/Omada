@@ -63,7 +63,7 @@ class BlackRock(object):
             list of tuples (unix date, price)
         """
 
-        stock = BlackRock.get_performance_data(symbol)
+        stock = cls.get_performance_data(symbol)
         info = stock["resultMap"]["RETURNS"][0]["returnsMap"]
         pairs = []
         current_price = 100
