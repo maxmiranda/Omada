@@ -70,15 +70,11 @@ def groups():
 
 @app.route('/vote', methods=["POST"])
 def vote():
-    try:
-        return request.form
-    except Exception:
-        return 'got exception'
     if request.method == 'POST':
+        return 'here at least'
         stock_id = request.form['id']
         buy = request.form['buy']
         approve = request.form['approve']
-        return (stock_id, buy, approve)
         return mongo.vote(stock_id, buy, approve)
 
 @app.route('/search', methods=['GET'])
