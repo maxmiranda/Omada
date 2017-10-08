@@ -85,18 +85,9 @@ def proposals():
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
+    return 'asd'
+    return request.method
     if request.method == 'POST':
-        sample = None
-        try:
-            sample = request.values
-        except Exception:
-            try:
-                sample = request.args
-            except Exception:
-                try:
-                    sample = request.form
-                except Exception:
-                    pass
         ticker = 'aapl'
         info = BlackRock.get_historical_prices(ticker)
         return json.dumps({
