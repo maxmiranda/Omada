@@ -49,7 +49,7 @@ class OmadaDB(object):
         vote_str = 'buy' if buy=="1" else 'sell'
         vote_str += '_votes_'
         vote_str += 'for' if approve=="1" else 'against'
-
+        return 1
         return self.find_user('dandrews')
         return self.stocks.find_one({"id": 1})
         return self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
