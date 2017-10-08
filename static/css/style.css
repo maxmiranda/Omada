@@ -16,7 +16,7 @@ CSS INDEX
 /*----------------------------------------
 1. Template DEFAULT CSS / Import fonts
 ------------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Raleway:100,100Italic,500,600,700|Lato:100,300,400,400i,700,900|Oswald:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Raleway:100,100Italic,500,600,700,800|Lato:100,300,400,400i,700,900|Oswald:300,400,700');
 
 
 body {
@@ -586,28 +586,149 @@ display: table;
 /*-------------------------------------------------------
    PROPOSALS
 ---------------------------------------------------------*/
+#proposals h3 {
+  margin-top: 50px;
+}
 #proposals .make_proposal_button {
   font-family: Hiragino Sans;
-  font-weight: 300px;
-  font-size: 22px;
+  font-size: 18px;
   color: #2494F0;
-  float: right;
+  float:right;
+  margin-top:50px;
+}
+.proposal  {
+  border: solid;
+  border-color: #54AAF0;
+  border-width: .5;
+  border-radius: 4px;
+  clear:both;
+}
+
+.proposal > * {
+  display: inline-block;
+  border-right-style: solid;
+  border-right-color: #fcfcfc;
+}
+
+.red_daily_change {
+  color: #C20000;
+}
+.green_daily_change {
+  /color: #5BB458;
 }
 
 #proposals h3 {
   font-family: Raleway;
   font-weight: bold;
   font-size: 29px;
-  float: left;
+  float:left;
+}
+
+#proposals h6 {
+  font-family: Roboto;
+  font-size: 20px;
 }
 
 .most_recent_prop {
   height: 350px;
-  border: solid;
-  border-color: #54AAF0;
-  border-radius: 4px;
+  clear:both;
 }
 
+.prop_headline {
+  display: inline-block;
+  margin-left: 55px;
+  margin-top: 22px;
+  float:left;
+}
+.prop_headline h2 {
+  float: left;
+  margin-right: 15px;
+  display: inline-block;;
+}
+
+#proposals .columns {
+  margin-left: 0px;
+}
+.first_col {
+  margin-left: 55px !important;
+  clear:left;
+}
+
+.prop_stock_ticker {
+  font-weight: 800;
+  font-family: Raleway;
+}
+
+.stock_price {
+  font-size: 28px;
+  font-family: Roboto;
+}
+.daily_change {
+  font-size: 22px;
+  font-family: Roboto;
+}
+
+#more_prop_label {
+  clear:both;
+}
+
+.more_proposals h4 {
+  font-family: Raleway;
+  font-size: 30px;
+  font-weight: 200px;
+  margin-top: 15px;
+}
+
+.more_proposals .prop_stock_ticker {
+  margin-top: 20px;
+  margin-left: 13px
+}
+
+.more_proposals h6 {
+  border-left-style: solid;
+  border-left-width: .4;
+  border-left-color: black;
+  padding-left: 6px;
+}
+
+.order_categories {
+  display: block;
+  width: 160px;
+}
+
+.order_info {
+  display: block;
+}
+
+#num_yes {
+  color: #5BB458;
+}
+#num_no {
+  color: #C20000;
+}
+
+.prop_icons button {
+  display: table-cell;
+  vertical-align: middle;
+  text-align:center;
+}
+.prop_icons button {
+  width: 148px;
+  height: 70px;
+}
+.checkmark {
+  background-color: #6BD267 !important;
+  float: left;
+}
+.red_ex {
+  background-color: #C93A3A !important;
+  float: left;
+  margin-left: 30px;
+}
+
+.more_proposals .proposal {
+  margin-top: 25px;
+}
 
 
 /*-------------------------------------------------------
@@ -677,7 +798,8 @@ li:last-child{
 
 .nav {
   float: right;
-  margin-top: 12px;
+  padding-top: 12px;
+  margin-bottom: -12px;
 }
 
 .container2 {
