@@ -71,10 +71,10 @@ def groups():
 @app.route('/vote', methods=['GET', 'POST'])
 def vote():
     if request.method == 'POST':
-        stock_id = request.form['id']
+        stock_id = request.args['id']
         return stock_id
-        buy = request.form['buy']
-        approve = request.form['approve']
+        buy = request.args['buy']
+        approve = request.args['approve']
         return mongo.vote(stock_id, buy, approve)
 
 @app.route('/search', methods=['GET'])
