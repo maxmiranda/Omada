@@ -6,6 +6,49 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
+    <script>
+      var graph = function(ticker){
+        jQuery.get("https://www.blackrock.com/tools/hackathon/performance", {"identifiers": ticker},
+         function(res) {
+
+            info = res["resultMap"]["RETURNS"][0]["returnsMap"];
+            pairs = [];
+            current_price = 100/58.0;
+            for (var key in info) {
+                var date = key.substring(4,6) + '/' + key.substring(6,8) + '/' + key.substring(0,4);
+                var date = Date.parse(date);
+                var price = parseFloat(info[key]["level"]) * current_price;
+                pairs.push([date, price]);
+            }
+            console.log(pairs);
+
+            Highcharts.stockChart('container', {
+
+
+                rangeSelector: {
+                    selected: 1
+                },
+
+                title: {
+                    text: ticker + 'Stock Price'
+                },
+
+                series: [{
+                    name: ticker,
+                    data: pairs,
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                }]
+            });
+        });
+      }
+
+    </script>
+
   </head>
   <body>
     <!-- MENU -->
@@ -42,10 +85,12 @@
     </div>
     <!-- MENU -->
     <div class = "container">
-      <form>
-        <input id = "mainsearch" type="text" name="search" placeholder="Search...">
+      <form action="" onsubmit="graph(document.getElementById('mainsearch'))">
+        <input id="mainsearch" type="text" name="search" placeholder="Search..." >
+        <input type="submit" style="display:none"/>
       </form>
       <h2 class="trend">Trending:</h2>
+      <div id="container" style="width: 500px;height: 500px;"></div>
     </div>
   </body>
 </html>

@@ -21,7 +21,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
-        redirect(url_for('index'))
+        redirect(url_for('groups'))
 
     if request.method == 'POST':
         if mongo.find_user(request.form['username']):
@@ -29,7 +29,7 @@ def login():
         else:
             return "Invalid Username"
 
-        return redirect(url_for('index'))
+        return redirect(url_for('groups'))
 
     return '''
         <form method="post">
@@ -48,7 +48,7 @@ def signup():
     mongo.add_user(user_data)
     session['username'] = request.form['username']
 
-    return redirect(url_for('index'))
+    return redirect(url_for('groups'))
 
 
 @app.route('/propose', methods=['GET', 'POST'])
