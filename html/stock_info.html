@@ -7,9 +7,13 @@
         $.ajax({
             type: "POST",
             url: 'http://omada.azurewebsites.net/stock',
+            contentType: 'application/json',
+            dataType: 'text',
             data: {"ticker": "GOOG"},
             success: function(data) {
                 // Create the chart
+                console.log(data)
+                console.log('HELLOOO');
                 Highcharts.stockChart('container', {
 
                     rangeSelector: {
@@ -28,12 +32,14 @@
                         }
                     }]
                 });
-            }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {alert('ERROR', xhr.responseText, thrownError);}
+
         });
 
     </script>
 </head>
-    <div id="container"></div>
+    <div id="container" style="width: 500px;height: 500px;"></div>
 <body>
 
 </body>

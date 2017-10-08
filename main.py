@@ -86,6 +86,7 @@ def proposals():
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
     if request.method == 'POST':
+        return request.values
         ticker = str(request.form.to_dict()["ticker"])
         info = BlackRock.get_historical_prices(ticker)
         return json.dumps({
