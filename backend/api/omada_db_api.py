@@ -53,5 +53,6 @@ class OmadaDB(object):
     def vote_count(self, stock_id):
         """Returns array of [buy_votes_for, buy_votes_against, sell_votes_for, sell_votes_against]"""
 
+        self.vote("1","1","1")
         stock = self.get_stocks(stock_id)
         return vars(stock)
