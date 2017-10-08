@@ -11,19 +11,18 @@ mongo = funcs.connect_db()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
     if 'username' in session:
         return ('<p>Logged in as {}</p>'.format(escape(session['username']))
                 + "<a href='/propose'><input type=button value='Propose a trade'></a>")
-    return 'You are not logged in'
+
+    return render_template('index.html')
 
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
         redirect(url_for('index')) 
-    
+
     if request.method == 'POST':
         if mongo.find_user(request.form['username']):
             session['username'] = request.form['username']
@@ -41,26 +40,15 @@ def login():
     '''
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['POST'])
 def signup():
-    if 'username' in session:
-        redirect(url_for('index')) 
-    if request.method == 'POST':
-        user_data = request.form.to_dict()
-        user_data.pop('password')
-        mongo.add_user(user_data)
-        session['username'] = request.form['username']
 
-        return ("<p>Congrats on signing up {}!</p>".format(user_data['username'])
-                + "<a href='/login'><input type=button value='Login'></a>")
+    user_data = request.form.to_dict()
+    user_data.pop('password')
+    mongo.add_user(user_data)
+    session['username'] = request.form['username']
 
-    return '''
-        <form method="post">
-            <p><input type=text name=username placeholder=Username>
-            <p><input type=password name=password placeholder=Password>
-            <p><input type=submit value=Login>
-        </form>
-    '''
+    return redirect(url_for('index'))
 
 
 @app.route('/propose', methods=['GET', 'POST'])
