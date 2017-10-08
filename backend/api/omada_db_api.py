@@ -39,7 +39,7 @@ class OmadaDB(object):
     def update_stocks(self, stock_id, params):
         """Update stock instance with new params"""
 
-        print(params)
+        return params
 
         return self.stocks.find_one_and_update({"id": stock_id}, params)
 
