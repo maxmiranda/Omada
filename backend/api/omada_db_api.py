@@ -49,3 +49,9 @@ class OmadaDB(object):
         vote_str += 'for' if approve=="1" else 'against'
 
         return self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
+
+    def vote_count(self, stock_id):
+        """Returns array of [buy_votes_for, buy_votes_against, sell_votes_for, sell_votes_against]"""
+
+        stock = self.get_stocks(stock_id)
+        return vars(stock)
