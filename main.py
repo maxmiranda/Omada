@@ -80,8 +80,9 @@ def proposals():
 def groups():
     return render_template('groups.html')
 
-@app.route('/vote/<stock_id>/<buy>/<approve>', methods=['GET', 'POST'])
+@app.route('/vote/<int:stock_id>/<int:buy>/<int:approve>', methods=['GET', 'POST'])
 def vote(stock_id, buy, approve):
+    return stock_id
     if request.method == 'POST':
         return int(stock_id) + int(buy) + int(approve)
         return mongo.vote(int(stock_id), int(buy), int(approve))
