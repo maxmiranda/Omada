@@ -13,8 +13,8 @@ app = Flask(__name__, template_folder='html/', static_folder='static/', static_u
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return redirect(url_for('groups'))
+    # if 'username' in session:
+        # return redirect(url_for('groups'))
 
     return render_template('index.html')
 
