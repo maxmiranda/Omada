@@ -4,35 +4,40 @@
     <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
     <script>
 
-        $.ajax({
-            type: "GET",
-            url: 'https://www.blackrock.com/tools/hackathon/performance',
-            contentType: 'application/json',
-            dataType: 'text',
-            data: {"identifiers": "GOOG"},
-            success: function(data) {
-                // Create the chart
-                Highcharts.stockChart('container', {
+        // $.ajax({
+        //     type: "GET",
+        //     url: 'https://www.blackrock.com/tools/hackathon/performance',
+        //     contentType: 'application/json',
+        //     dataType: 'text',
+        //     data: {"identifiers": "GOOG"},
+        //     success: function(data) {
+        //         // Create the chart
+        //         Highcharts.stockChart('container', {
 
-                    rangeSelector: {
-                        selected: 1
-                    },
+        //             rangeSelector: {
+        //                 selected: 1
+        //             },
 
-                    title: {
-                        text: data
-                    },
+        //             title: {
+        //                 text: data
+        //             },
 
-                    series: [{
-                        name: 'aapl',
-                        data: data,
-                        tooltip: {
-                            valueDecimals: 2
-                        }
-                    }]
-                });
-            },
-            error: function(xhr, ajaxOptions, thrownError) {alert('ERROR', xhr.responseText, thrownError);}
+        //             series: [{
+        //                 name: 'aapl',
+        //                 data: data,
+        //                 tooltip: {
+        //                     valueDecimals: 2
+        //                 }
+        //             }]
+        //         });
+        //     },
+        //     error: function(xhr, ajaxOptions, thrownError) {alert('ERROR', xhr.responseText, thrownError);}
 
+        // });
+
+        jQuery.get("https://www.blackrock.com/tools/hackathon/performance", {"identifiers": "IXN,GS"}, function(response) {
+            // Do something with response
+            console.log(response);
         });
 
     </script>
