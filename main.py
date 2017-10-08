@@ -21,7 +21,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
-        redirect(url_for('index')) 
+        redirect(url_for('index'))
 
     if request.method == 'POST':
         if mongo.find_user(request.form['username']):
@@ -81,6 +81,14 @@ def propose():
 @app.route('/proposals', methods=['GET'])
 def proposals():
     return render_template('proposals.html')
+
+@app.route('/groups', methods=['GET'])
+def groups():
+    return render_template('groups.html')
+
+@app.route('/search', methods=['GET'])
+def search():
+    return render_template('search.html')
 
 @app.route('/fuckyou', methods=['GET'])
 def fuckyou():

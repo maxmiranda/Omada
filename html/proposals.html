@@ -5,8 +5,6 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta charset="utf-8">
     <title>Proposals</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
@@ -20,10 +18,11 @@
         <div class = "nav">
           <div class="regular_menu">
             <ul>
-              <li><a href="#">Group   </a></li>
+              <li><a href="/groups">Group   </a></li>
               <li><a id = "selected_menu_item" href="#">Proposals   </a></li>
-              <li><a href="#">Portfolio   </a></li>
-              <li><a href="#">Account   </a></li>
+              <li><a href="/portfolio">Portfolio   </a></li>
+              <li><a href="/account">Account   </a></li>
+              <li><a href = "/search"> <img class = "invert" id = "searchglass"src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
             </ul>
           </div>
             <div class="dropdown_menu" onclick="drop(this)">
@@ -48,63 +47,104 @@
     <!-- MENU END -->
 
     <div class = "container" id = "proposals">
-      <p class = "make_proposal_button"> Make a Proposal </p>
-      <h3> Most Recent Proposal </h3>
-      <div class = "most_recent_prop"> <!--Maybe do 6 columns for each side  -->
+      <a onClick = "document.getElementById('proposal-modal').classList.remove('hidden');"class = "make_proposal_button"> Make a Proposal </a>
+      <h3 id = "first_item"> Most Recent Proposal </h3>
+      <!-- MOST RECENT PROP START -->
+      <div class = "proposal most_recent_prop"> <!--Maybe do 6 columns for each side  -->
         <div class = "prop_headline">
-          <h2 class = "prop_stock_token"> AAPL </h2>
-          <h3 class = "current_price"> $155.30 </h3>
-          <h3 class = "daily_change"> (-.09)</h3>
+          <h2 class = "prop_stock_ticker"> AAPL </h2>
+          <h2 class = "stock_price"> $155.30 </h3>
+          <h2 class = "red daily_change"> (-.09)</h3>
         </div>
-        <h4> Action: </h4> <h6> Buy </h6>
-        <h4> Type: </h4> <h6> Limit</h6>
-        <h4> Price: </h4> <h6> $156.05</h6>
-        <h4> Shares: </h4> <h6> 12 </h6>
-        <h4> Order: </h4> <h6> $1,872.60</h6>
-        <h4> Your portion: </h4> <h6> $724.67 </h6>
-        <h4> Votes: </h4> <h6 id = "num_yes"> 2 Yes </h6>
-                            <h6>  | </h6>
-                            <h6 id = "num_no"> 1 No </h6>
-        <div class = "prop_icons">
-          <button class = "checkmark"> <img class = "prop_icon" src = ""> </button>
-          <button class = "red_ex"> <img class = "prop_icon" src = ""> </button>
+
+        <div class = "three columns order_categories first_col">
+          <h4> Action: </h4>
+          <h4> Type: </h4>
+          <h4> Price: </h4>
+          <h4> Shares: </h4>
+          <h4> Order: </h4>
         </div>
+
+        <div class = "three columns order_info">
+          <h6> Buy </h6>
+          <h6> Limit</h6>
+          <h6> $156.05</h6>
+          <h6> 12 </h6>
+          <h6> $1,872.60</h6>
+        </div>
+
+        <div class = "three columns order_categories">
+            <h4> Your portion: </h4>
+            <h4> Votes: </h4>
+        </div>
+
+        <div class = "three columns order_info">
+          <h6> $724.67 </h6>
+          <h6 id = "num_yes"> 2 Yes | <span id = "num_no"> 0 No </span> </h6>
+          </div>
+          <div class = "prop_icons">
+            <button class = "checkmark">
+              <img class = "prop_icon" src = "{{ url_for('static', filename='img/checkmark.png') }}">
+            </button>
+            <button class = "red_ex">
+              <img class = "prop_icon" src = "{{ url_for('static', filename='img/exmark.png') }}">
+            </button>
+          </div>
       </div>
 
-      <h3> More Proposals </h3>
+      <h3 id = "more_prop_label"> More Proposals </h3>
       <div class = "more_proposals">
-
         <div class = "proposal">
-          <h2 class = "prop_stock_token"> AAPL </h2>
-          <h3 class = "current_price"> $155.30 </h3>
-          <h3 class = "daily_change"> (-.09)</h3>
-          <h4> Action: </h4> <h6> Buy </h6>
-          <h4> Type: </h4> <h6> Limit</h6>
-          <h4> Price: </h4> <h6> $156.05</h6>
-          <h4> Shares: </h4> <h6> 12 </h6>
-          <h4> Order: </h4> <h6> $1,872.60</h6>
-          <h4> Your portion: </h4> <h6> $724.67 </h6>
-          <h4> Votes: </h4> <h6> 2 Yes </h6>
-                              <h6>  | </h6>
-                              <h6> 1 No </h6>
+          <h2 class = "prop_stock_ticker"> MSFT </h2>
+          <h2 class = "stock_price"> $76.00 </h3>
+          <h2 class = "green daily_change"> (+.09)</h3>
+          <h6> Buy </h6>
+          <h6> Limit</h6>
+          <h6> $156.05</h6>
+          <h6> 12 </h6>
+          <h6> $1,872.60</h6>
+          <h6> $724.67 </h6>
+          <h6> 2 Yes </h6>
+          <h6> 0 No </h6>
         </div>
 
         <div class = "proposal">
-          <h2 class = "prop_stock_token"> AAPL </h2>
-          <h3 class = "current_price"> $155.30 </h3>
-          <h3 class = "daily_change"> (-.09)</h3>
-          <h4> Action: </h4> <h6> Buy </h6>
-          <h4> Type: </h4> <h6> Limit</h6>
-          <h4> Price: </h4> <h6> $156.05</h6>
-          <h4> Shares: </h4> <h6> 12 </h6>
-          <h4> Order: </h4> <h6> $1,872.60</h6>
-          <h4> Your portion: </h4> <h6> $724.67 </h6>
-          <h4> Votes: </h4> <h6> 2 Yes </h6>
-                              <h6>  | </h6>
-                              <h6> 1 No </h6>
+          <h2 class = "prop_stock_ticker"> BLK </h2>
+          <h2 class = "stock_price"> $155.30 </h3>
+          <h2 class = "red daily_change"> (-1.21)</h3>
+          <h6> Buy </h6>
+          <h6> Limit</h6>
+          <h6> $156.05</h6>
+          <h6> 12 </h6>
+          <h6> $1,872.60</h6>
+          <h6> $724.67 </h6>
+          <h6> 2 Yes </h6>
+          <h6> 0 No </h6>
         </div>
-
       </div>
+    </div>
 
+    <div class="modal hidden" id="proposal-modal">
+        <div class="wrapper">
+            <form class="content" action="/proposal" method="post">
+                <div>
+                    <b>Stock Ticker</b>
+                    <input class="input" type="text" name="ticker" placeholder="AAPL">
+                </div>
+                <div>
+                    <b>Buy or Sell?</b>
+                    <select class = "input" type = "buy_or_sell" name = "buy_or_sell">
+                      <option value="Buy">Buy</option>
+                      <option value="Sell">Sell</option>
+                    </select>
+                </div>
+                <div>
+                    <b>Number of Shares</b>
+                    <input class="input" type="text" name="number" placeholder="2">
+                </div>
+                    <input type="submit" value="Place Order">
+            </form>
+        </div>
+    </div>
   </body>
 </html>
