@@ -52,6 +52,5 @@ class OmadaDB(object):
         vote_str += '_votes_'
         vote_str += 'for' if approve=="1" else 'against'
 
-        return update_stocks(
-            stock_id, 
-            {'$inc': {vote_str: 1}})
+        return {'$inc': {vote_str: 1}}
+        return update_stocks(stock_id, {'$inc': {vote_str: 1}})
