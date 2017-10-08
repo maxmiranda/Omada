@@ -4,7 +4,7 @@
     <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
     <script>
 
-        jQuery.get("http://omada.azurewebsites.net/nasdaq",
+        jQuery.post("http://omada.azurewebsites.net/nasdaq",
             function(res) {
                 console.log(res);
                 res = res['apple']
