@@ -72,4 +72,3 @@ class BlackRock(object):
             price = float(v["level"]) * current_price
             pairs.append([date, price])
         return pairs
-
