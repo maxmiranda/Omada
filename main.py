@@ -71,6 +71,7 @@ def groups():
 @app.route('/vote', methods=['GET', 'POST'])
 def vote():
     if request.method == 'POST':
+        return 1
         stock_id = request.args['id']
         return stock_id
         buy = request.args['buy']
