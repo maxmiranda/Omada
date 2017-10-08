@@ -35,11 +35,12 @@ class BlackRock(object):
 
 
     @classmethod
-    def get_performance_data(cls, symbol):
+    def get_performance_data(cls, *symbols):
         """Function docstring."""
 
-        res = requests.get("https://www.blackrock.com/tools/hackathon/performance", params={"identifiers": symbol})
-        return 'asddasasd'
+        symbols = ",".join(symbols)
+        res = requests.get(cls.perfomance_data_uri, params={"identifiers": symbols})
+
         return res.json()
 
 
@@ -63,7 +64,6 @@ class BlackRock(object):
         """
 
         stock = cls.get_performance_data(symbol)
-        return stock
         info = stock["resultMap"]["RETURNS"][0]["returnsMap"]
         pairs = []
         current_price = 100

@@ -102,7 +102,10 @@ def stock():
             </form>
         '''
 
-
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    info = BlackRock.get_performance_data('aapl')
+    return info
 
 @app.route('/logout')
 def logout():
