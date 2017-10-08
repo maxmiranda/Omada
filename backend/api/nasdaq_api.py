@@ -48,4 +48,4 @@ def simulate_data(symbol):
     for line in data:
         line = json.loads(line)
         pairs.append([line["DateStamp"], line["LastSale"]])
-    return {"apple": pairs}
+    return str({"apple": pairs})
