@@ -93,6 +93,7 @@ def stock():
 
 @app.route('/nasdaq', methods=['GET', 'POST'])
 def nasdaq():
+    return 'jeremey'
     return str(simulate_data('GOOG'))
 
 @app.route('/live', methods=['GET', 'POST'])
