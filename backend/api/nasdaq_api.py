@@ -43,6 +43,7 @@ class Nasdaq(object):
 
 
 def simulate_data(symbol):
+    return 'heyo'
     data = Nasdaq(symbol).mock_data
     pairs = []
     for line in data:
