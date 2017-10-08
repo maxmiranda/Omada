@@ -97,6 +97,7 @@ def nasdaq():
 
 @app.route('/live', methods=['GET', 'POST'])
 def live():
+    return "hi"
     return render_template('stock_live.html')
 
 
