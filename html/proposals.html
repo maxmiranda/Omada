@@ -2,10 +2,9 @@
   <head>
     <link rel="icon" href="favicon.png">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta charset="utf-8">
     <title>Proposals</title>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -80,13 +79,13 @@
 
         <div class = "three columns order_info">
           <h6> $724.67 </h6>
-          <h6 id = "num_yes"> 2 Yes <span style = "color: black">| </span> <span id = "num_no"> 0 No </span> </h6>
+          <h6 id = "num_yes"> <span id="yesnum">2</span> Yes <span style = "color: black">| </span> <span id = "num_no"> <span id="nonum">0</span> No </span> </h6>
           </div>
           <div class = "six columns prop_icons">
-            <button class = "checkmark">
+            <button id="yes" class="checkmark" onclick="func()">
               <img class = "prop_icon" src = "{{ url_for('static', filename='img/checkmark.png') }}">
             </button>
-            <button class = "red_ex">
+            <button  id="no" class="red_ex" onclick="notherFunc()">
               <img class = "prop_icon" src = "{{ url_for('static', filename='img/exmark.png') }}">
             </button>
           </div>
@@ -162,5 +161,13 @@
             </form>
         </div>
     </div>
+
+    <script>
+      $('#yes').click(function() {
+        $('#yesnum').text(parseInt($('#yesnum').text()) + 1);
+        // jQuery.get('http://omada.azurewebsites.net/vote/1/1/1', function(res) {});
+      });
+      // $('#yesnum').text(jQuery.get('http://omada.azurewebsites.net/votes/1', function(res) {}));
+    </script>
   </body>
 </html>
