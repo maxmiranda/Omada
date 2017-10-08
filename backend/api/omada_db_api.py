@@ -40,7 +40,7 @@ class OmadaDB(object):
         """Update stock instance with new params"""
         a = None
         try:
-            self.stocks.find_one_and_update({"id": stock_id}, params)
+            self.stocks.find_one_and_update({"id": int(stock_id)}, params)
             a = 1
         except Exception:
             a = 2
