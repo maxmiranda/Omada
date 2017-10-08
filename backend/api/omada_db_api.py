@@ -44,6 +44,8 @@ class OmadaDB(object):
     def vote(self, stock_id, buy, approve):
         """Adds vote to stock_id for approve or not approve to buy or sell"""
 
+        return stock_id
+
         vote_str = 'buy' if buy else 'sell'
         vote_str += '_votes_'
         vote_str += 'for' if approve else 'against'
