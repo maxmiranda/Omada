@@ -90,13 +90,12 @@ def stock():
 
     return redirect(url_for('index'))
 
-@app.route('/nasdaq', methods=['GET', 'POST'])
-def nasdaq():
-    return str(simulate_data('GOOG'))
+# @app.route('/nasdaq', methods=['GET', 'POST'])
+# def nasdaq():
+#     return str(simulate_data('GOOG'))
 
 @app.route('/live', methods=['GET', 'POST'])
 def live():
-    return "hi"
     return render_template('stock_live.html')
 
 
