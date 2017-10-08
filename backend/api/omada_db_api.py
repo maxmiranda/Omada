@@ -38,10 +38,18 @@ class OmadaDB(object):
 
     def update_stocks(self, stock_id, params):
         """Update stock instance with new params"""
+        a = None
+        try:
+            self.stocks.find_one_and_update({"id": stock_id}, params)
+            a = 1
+        except Exception:
+            a = 2
+        except:
+            a = 3
+        else: 
+            a = 4
 
-        return stock_id
-
-        return self.stocks.find_one_and_update({"id": stock_id}, params)
+        return a
 
     def vote(self, stock_id, buy, approve):
         """Adds vote to stock_id for approve or not approve to buy or sell"""
