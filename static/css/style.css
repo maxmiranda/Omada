@@ -724,6 +724,27 @@ display: table;
   margin-left: 30px;
 }
 
+.small_checkmark {
+  background-color: #6BD267 !important;
+}
+
+.small_red_ex {
+  background-color: #C93A3A !important;
+}
+
+.small_prop_icons button {
+  height: 40px;
+  width: 70px;
+}
+.small_prop_icons img {
+  height: 15px;
+  width: 15px;
+}
+
+.small_prop_icons {
+  float:right;
+}
+
 .more_proposals .proposal {
   margin-top: 25px;
   margin-bottom: 25px;
@@ -767,6 +788,13 @@ display: table;
 
 #mainsearch {
   margin-top:60px;
+}
+
+.accountpage {
+  width:1280px;
+  position: absolute;
+  top:0;
+  left:0;
 }
 
 #selected_menu_item {
@@ -825,7 +853,7 @@ li:last-child{
 .nav {
   float: right;
   padding-top: 12px;
-  margin-bottom: -12px;
+  margin-bottom: -13px;
 }
 
 .container2 {

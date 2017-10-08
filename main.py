@@ -90,6 +90,10 @@ def groups():
 def search():
     return render_template('search.html')
 
+@app.route('/account', methods=['GET'])
+def account():
+    return render_template('account.html')
+
 @app.route('/fuckyou', methods=['GET'])
 def fuckyou():
     import requests
