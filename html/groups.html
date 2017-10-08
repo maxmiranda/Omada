@@ -45,46 +45,63 @@
   </div>
   <!-- MENU END -->
 
+<div class = "container">
+  <h3 class="group_name">Group: Omada's Founders</h3>
+    <div class = "between">
 
-<h2 class="group_name">Group: Omada's Founders</h2>
-<table>
-  <tr>
-    <th>Team Member</th>
-    <th>Invested Balance</th>
-    <th>Net Change</th>
-    <th>Balance in Reserve</th>
-    <th>% of Reserve</th>
-  </tr>
-  <tr>
-    <td class="name">Max Miranda</td>
-    <td>$40.00</td>
-    <td class="profit">+$7.60</td>
-    <td>$20.00</td>
-    <td>38.7%</td>
-  </tr>
-  <tr>
-    <td class="name">Daniel Andrews</td>
-    <td>$40.00</td>
-    <td class="profit">+$7.60</td>
-    <td>$20.00</td>
-    <td>24.0%</td>
-  </tr>
-  <tr>
-    <td class="name">Jeremy Barenholtz</td>
-    <td>$40.00</td>
-    <td class="profit">+$7.60</td>
-    <td>$20.00</td>
-    <td>20.2%</td>
-  </tr>
-  <tr>
-    <td class="name">Robert Iancu</td>
-    <td>$40.00</td>
-    <td class="profit">+$7.60</td>
-    <td>$20.00</td>
-    <td>17.1%</td>
-  </tr>
-
-</table>
-<button class="button1">Invest More</button>
+      <div class = "table">
+        <div class = "row table_header">
+          <div>Team Member</div>
+          <div>Invested Balance</div>
+          <div>Net Change</div>
+          <div>Balance in Reserve</div>
+          <div>% of Reserve</div>
+          <div>Join Date</div>
+          <div>Last Proposal</div>
+        </div>
+        <div id = "me" class = "row">
+          <img class = "user_photo" src = "{{ url_for('static', filename='img/max.png') }}">
+          <div><a href = "/account"> Me </a> </div>
+          <div>$40.00</div>
+          <div>+$7.60</div>
+          <div>$20.00</div>
+          <div>38.7%</div>
+          <div>9/17/17</div>
+          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+        </div>
+        <div class = "row">
+            <img class = "user_photo" src = "{{ url_for('static', filename='img/daniel.png') }}">
+          <div>Daniel Andrews</div>
+          <div>$40.00</div>
+          <div>+$7.60</div>
+          <div>$20.00</div>
+          <div>24.0%</div>
+          <div>9/15/17</div>
+          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+        </div>
+        <div class = "row">
+            <img class = "user_photo" src = "{{ url_for('static', filename='img/jeremy.png') }}">
+          <div >Jeremy Barenholtz</div>
+          <div>$40.00</div>
+          <div >+$7.60</div>
+          <div>$20.00</div>
+          <div>20.2%</div>
+          <div>9/21/17</div>
+          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+        </div>
+        <div class = "row">
+          <img class = "user_photo" src = "{{ url_for('static', filename='img/robert.png') }}">
+          <div >Robert Iancu</div>
+          <div>$40.00</div>
+          <div >+$7.60</div>
+          <div>$20.00</div>
+          <div>17.1%</div>
+          <div>9/18/17</div>
+          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+        </div>
+      </div>
+    <button id="invest_more">Invest More</button>
+  </div>
+</div>
 </body>
 </html>
