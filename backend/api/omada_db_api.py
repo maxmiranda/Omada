@@ -1,6 +1,6 @@
 """MongoDB """
 
-from pymongo import MongoClient
+from pymongo import MongoClient, ReturnDocument
 
 class OmadaDB(object):
     """Class docstring"""
@@ -35,3 +35,20 @@ class OmadaDB(object):
         """Return unique stock instance information."""
 
         return self.stocks.find_one({"id": stock_id})
+
+    def update_stocks(self, stock_id, params):
+        """Update stock instance with new params"""
+
+        return self.stocks.find_one_and_update({"id": stock_id}, params)
+
+    def vote(self, stock_id, buy, approve):
+        """Adds vote to stock_id for approve or not approve to buy or sell"""
+
+        vote_str = 'buy' if buy else 'sell'
+        vote_str += '_votes_'
+        vote_str += 'for' if approve else 'against'
+
+        return update_stocks(
+            stock_id, 
+            {'$inc': {vote_str: 1}}, 
+            return_document=ReturnDocument.AFTER)

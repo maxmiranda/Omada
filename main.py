@@ -31,13 +31,7 @@ def login():
 
         return redirect(url_for('groups'))
 
-    return '''
-        <form method="post">
-            <p><input type=text name=username placeholder=Username>
-            <p><input type=password name=password placeholder=Password>
-            <p><input type=submit value=Login>
-        </form>
-    '''
+    return redirect(url_for('index'))
 
 
 @app.route('/signup', methods=['POST'])
@@ -53,30 +47,18 @@ def signup():
 
 @app.route('/propose', methods=['GET', 'POST'])
 def propose():
-    if 'username' in session:
-
-        if request.method == 'POST':
-            return ("You proposed the following trade to the group:\n"
-                    "<p>Symbol: {ticker}\n"
-                    "<p>Action: {action}\n"
-                    "<p>Type: {type}\n"
-                    "<p>Price: {action}\n"
-                    "<p>Shares: {shares}\n</p>"
-                    "<a href='/'><input type=button value=Home></a>"
-                    "".format(**request.form.to_dict()))
-
-        return '''
-        <form method="post">
-            <p><input type=text name=ticker placeholder=Symbol>
-            <p><input type=text name=action placeholder=Action>
-            <p><input type=text name=type placeholder="Order Type">
-            <p><input type=text name=price placeholder="Price">
-            <p><input type=text name=shares placeholder="Number of Shares">
-            <p><input type=submit value=Propose>
-        </form>
-        '''
+    if 'username' in session and request.method == 'POST':
+        return ("You proposed the following trade to the group:\n"
+                "<p>Symbol: {ticker}\n"
+                "<p>Action: {action}\n"
+                "<p>Type: {type}\n"
+                "<p>Price: {action}\n"
+                "<p>Shares: {shares}\n</p>"
+                "<a href='/'><input type=button value=Home></a>"
+                "".format(**request.form.to_dict()))
 
     return 'You must login in order to propose a trade.'
+
 
 @app.route('/proposals', methods=['GET'])
 def proposals():
@@ -86,6 +68,15 @@ def proposals():
 def groups():
     return render_template('groups.html')
 
+@app.route('/vote', methods=["POST"])
+def vote():
+    if request.method == 'POST':
+        stock_id = request.form['id']
+        buy = request.form['buy']
+        approve = request.form['approve']
+
+        return mongo.vote(stock_id, buy, approve)
+
 @app.route('/search', methods=['GET'])
 def search():
     return render_template('search.html')
@@ -93,11 +84,6 @@ def search():
 @app.route('/account', methods=['GET'])
 def account():
     return render_template('account.html')
-
-@app.route('/fuckyou', methods=['GET'])
-def fuckyou():
-    import requests
-    return str(requests.get("https://www.blackrock.com/tools/hackathon/performance?identifiers=GOOG"))
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
@@ -109,18 +95,7 @@ def stock():
             'info': info
         })
 
-    if 'username' in session:
-        return '''
-            <form method="post">
-                <p><input type=text name=ticker placeholder=Symbol>
-                <p><input type=submit value=Info>
-            </form>
-        '''
-
-
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-    return render_template('stock_info.html')
+    return redirect(url_for('index'))
 
 
 @app.route('/logout')
@@ -129,10 +104,8 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
-
-# set the secret key.  keep this really secret:
+# SHHHHHH it's a secret
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-####
 
 
 if __name__ == '__main__':
