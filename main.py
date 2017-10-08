@@ -49,7 +49,7 @@ def signup():
 @app.route('/proposal', methods=['POST'])
 def proposal():
     if 'username' in session:
-        mongo.add_proposal(request.form.to_dict())
+        # mongo.add_proposal(request.form.to_dict())
         return redirect(url_for('proposals'))
 
     return 'You must login in order to propose a trade.'
