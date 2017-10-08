@@ -58,5 +58,7 @@ class OmadaDB(object):
             {"$inc": {vote_str: "1"}}
         except:
             return 'lolwut'
+        else:
+            return 'pleeeaassseee'
 
         return self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
