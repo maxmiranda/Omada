@@ -2,7 +2,6 @@ from flask import Flask, session, redirect, url_for, escape, request, json, rend
 
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
-from backend.api.nasdaq_api import simulate_data
 
 
 app = Flask(__name__, template_folder='html/', static_folder='static/', static_url_path='')
@@ -46,29 +45,11 @@ def signup():
     return redirect(url_for('groups'))
 
 
-@app.route('/propose', methods=['GET', 'POST'])
-def propose():
+@app.route('/proposal', methods=['POST'])
+def proposal():
     if 'username' in session:
-        if request.method == 'POST':
-            return ("You proposed the following trade to the group:\n"
-                    "<p>Symbol: {ticker}\n"
-                    "<p>Action: {action}\n"
-                    "<p>Type: {type}\n"
-                    "<p>Price: {action}\n"
-                    "<p>Shares: {shares}\n</p>"
-                    "<a href='/'><input type=button value=Home></a>"
-                    "".format(**request.form.to_dict()))
-
-        return '''
-        <form method="post">
-            <p><input type=text name=ticker placeholder=Symbol>
-            <p><input type=text name=action placeholder=Action>
-            <p><input type=text name=type placeholder="Order Type">
-            <p><input type=text name=price placeholder="Price">
-            <p><input type=text name=shares placeholder="Number of Shares">
-            <p><input type=submit value=Propose>
-        </form>
-        '''
+        # mongo.add_proposal(request.form.to_dict())
+        return redirect(url_for('proposals'))
 
     return 'You must login in order to propose a trade.'
 
@@ -81,7 +62,7 @@ def proposals():
 def groups():
     return render_template('groups.html')
 
-@app.route('/vote/<stock_id>/<buy>/<approve>', methods=['GET', 'POST'])
+# @app.route('/vote/<stock_id>/<buy>/<approve>', methods=['GET', 'POST'])
 def vote(stock_id, buy, approve):
     return mongo.vote(stock_id, buy, approve)
 
@@ -109,9 +90,9 @@ def stock():
 
     return redirect(url_for('index'))
 
-@app.route('/nasdaq', methods=['GET', 'POST'])
-def nasdaq():
-    return simulate_data('GOOG')
+# @app.route('/nasdaq', methods=['GET', 'POST'])
+# def nasdaq():
+#     return str(simulate_data('GOOG'))
 
 @app.route('/live', methods=['GET', 'POST'])
 def live():

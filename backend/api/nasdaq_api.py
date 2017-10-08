@@ -44,8 +44,9 @@ class Nasdaq(object):
 
 def simulate_data(symbol):
     data = Nasdaq(symbol).mock_data
+    return 'asd'
     pairs = []
     for line in data:
         line = json.loads(line)
         pairs.append([line["DateStamp"], line["LastSale"]])
-    return pairs
+    return str({"apple": pairs})

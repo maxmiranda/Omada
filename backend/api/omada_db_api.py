@@ -60,3 +60,6 @@ class OmadaDB(object):
         stock = self.get_stocks(stock_id)
         # return vars(stock)
         return 1
+
+    def add_proposal(self, d: dict):
+        self.stocks.update(d)

@@ -2,11 +2,12 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="http://code.highcharts.com/stock/highstock.src.js"></script>
-    <script>
+<!--     <script>
 
-        jQuery.get("http://omada.azurewebsites.net/nasdaq",
+        jQuery.post("http://omada.azurewebsites.net/nasdaq",
             function(res) {
-
+                console.log(res);
+                res = res['apple']
                 Highcharts.stockChart('container', {
 
 
@@ -27,12 +28,12 @@
                     }]
                 });
             });
-          }
 
-    </script>
+    </script> -->
 </head>
-    <div id="container" style="width: 500px;height: 500px;"></div>
 <body>
+    hello
+    <div id="container" style="width: 500px;height: 500px;"></div>
 
 </body>
 </html>
