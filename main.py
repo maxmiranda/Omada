@@ -82,6 +82,7 @@ def groups():
 
 @app.route('/vote/<stock_id>/<buy>/<approve>', methods=['GET', 'POST'])
 def vote():
+    return 'asd'
     if request.method == 'POST':
         return(stock_id, buy, approve)
         return mongo.vote(stock_id, buy, approve)
