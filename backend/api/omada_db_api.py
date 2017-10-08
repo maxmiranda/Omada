@@ -50,8 +50,10 @@ class OmadaDB(object):
         vote_str += '_votes_'
         vote_str += 'for' if approve=="1" else 'against'
 
-
+        a = None
         try: 
-            self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
+            a = self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
         except:
-            self.update_stocks('stock_id', {})
+            a = self.update_stocks('stock_id', {})
+            return a
+        return a
