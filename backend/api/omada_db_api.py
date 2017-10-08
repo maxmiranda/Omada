@@ -54,11 +54,6 @@ class OmadaDB(object):
         except Exception:
             return 'failed'
 
-        try:
-            {"$inc": {vote_str: "1"}}
-        except:
-            return 'lolwut'
-        else:
-            return 'pleeeaassseee'
-
+        a = {"$inc": {vote_str: "1"}}
+        return 'got past a'
         return self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
