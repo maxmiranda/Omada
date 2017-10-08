@@ -103,8 +103,8 @@ def stock():
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    info = BlackRock.get_performance_data('aapl')
-    return info
+    return render_template('stock_info.html')
+
 
 @app.route('/logout')
 def logout():
