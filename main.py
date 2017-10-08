@@ -21,6 +21,9 @@ def index():
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        redirect(url_for('index')) 
+    
     if request.method == 'POST':
         if mongo.find_user(request.form['username']):
             session['username'] = request.form['username']
@@ -40,6 +43,8 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if 'username' in session:
+        redirect(url_for('index')) 
     if request.method == 'POST':
         user_data = request.form.to_dict()
         user_data.pop('password')
@@ -92,23 +97,21 @@ def proposals():
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
-    if 'username' in session:
-        if request.method == 'POST':
-            ticker = str(request.form.to_dict()["ticker"])
-            info = BlackRock.get_historical_prices(ticker)
-            return json.dumps({
-                'ticker': ticker,
-                'info': info
-            })
+    if request.method == 'POST':
+        ticker = str(request.form.to_dict()["ticker"])
+        info = BlackRock.get_historical_prices(ticker)
+        return json.dumps({
+            'ticker': ticker,
+            'info': info
+        })
 
+    if 'username' in session:
         return '''
             <form method="post">
                 <p><input type=text name=ticker placeholder=Symbol>
                 <p><input type=submit value=Info>
             </form>
         '''
-
-    return 'You must login in order to request stock info.'
 
 
 
