@@ -47,10 +47,16 @@ class OmadaDB(object):
         """Adds vote to stock_id for approve or not approve to buy or sell"""
 
 
+        try:
+            vote_str = 'buy' if buy=="1" else 'sell'
+            vote_str += '_votes_'
+            vote_str += 'for' if approve=="1" else 'against'
+        except Exception:
+            return 'failed'
 
-        vote_str = 'buy' if buy=="1" else 'sell'
-        vote_str += '_votes_'
-        vote_str += 'for' if approve=="1" else 'against'
+        try:
+            {"$inc": {vote_str: "1"}}
+        except Exception:
+            return 'lolwut'
 
-        return {"$inc": {vote_str: "1"}}
-        return update_stocks(stock_id, {'$inc': {vote_str: 1}})
+        return self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
