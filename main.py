@@ -2,7 +2,8 @@ from flask import Flask, session, redirect, url_for, escape, request, json, rend
 
 from backend import funcs
 from backend.api.black_rock_api import BlackRock
-import nasdaq_api
+from nasdaq_api import simulate_data
+
 
 app = Flask(__name__, template_folder='html/', static_folder='static/', static_url_path='')
 
