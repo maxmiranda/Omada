@@ -60,7 +60,7 @@
                                 var series = this.series[0];
                                 var index = 0;
                                 setInterval(function () {
-                                    series.addPoint([(new Date()).getTime(), res[index][1]], true, true);
+                                    series.addPoint([(new Date()).getTime(), 800 + 0.01 * res[index][1]], true, true);
                                     index += 1
                                 }, 1000);
                             }
