@@ -54,6 +54,7 @@ class OmadaDB(object):
         except Exception:
             return 'failed'
 
+        return 'lolol'
         try:
             {"$inc": {vote_str: "1"}}
         except Exception:
