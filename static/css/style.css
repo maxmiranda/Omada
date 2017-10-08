@@ -440,21 +440,17 @@ textarea {
 .sign {
   font-family: Lato !important;
   font-weight: 200px !important;
-
+  padding-left:20px !important;
+  padding-right:20px !important;
 }
 #signin {
   margin-left: 85%;
   margin-top: 2%;
   font-size: 18px !important;
-  padding-left: 6px !important;
-  padding-right: 6px !important;
-
 }
 
 #signup {
   font-size: 20px !important;
-  padding-left:20px !important;
-  padding-right:20px !important;
 
 }
 
@@ -483,12 +479,14 @@ textarea {
   width: 80px;
   margin-left: 30%;
   margin-bottom: 10%;
+  margin-top: 30px;
 }
 
 .description {
   text-align: center;
   font-size: 25px;
   font-family: Hiragino Sans;
+  margin-top: 30px;
 }
 
 
