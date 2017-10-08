@@ -88,7 +88,6 @@ def stock():
     if request.method == 'POST':
         ticker = 'aapl'
         info = BlackRock.get_historical_prices(ticker)
-        return info
         return json.dumps({
             'ticker': ticker,
             'info': info
