@@ -40,7 +40,7 @@ class OmadaDB(object):
         """Update stock instance with new params"""
 
         return 1
-        return self.stocks.find_one({"id": stock_id})
+        
         return self.stocks.find_one_and_update({"id": stock_id}, params)
 
     def vote(self, stock_id, buy, approve):
@@ -50,4 +50,5 @@ class OmadaDB(object):
         vote_str += '_votes_'
         vote_str += 'for' if approve=="1" else 'against'
 
+        return self.stocks.find_one({"id": stock_id})
         return self.update_stocks(stock_id, {'$inc': {vote_str: 1}})
