@@ -85,6 +85,7 @@ def proposals():
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():
+    return 'asd'
     if request.method == 'POST':
         return request.values
         ticker = str(request.form.to_dict()["ticker"])
