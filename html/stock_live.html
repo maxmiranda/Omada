@@ -6,7 +6,8 @@
 
         jQuery.get("http://omada.azurewebsites.net/nasdaq",
             function(res) {
-
+                console.log(res);
+                res = res['apple']
                 Highcharts.stockChart('container', {
 
 
