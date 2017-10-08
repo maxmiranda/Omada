@@ -38,7 +38,7 @@ class BlackRock(object):
     def get_performance_data(cls, symbol):
         """Function docstring."""
 
-        res = requests.get(cls.perfomance_data_uri, params={"identifiers": symbol})
+        res = requests.get("https://www.blackrock.com/tools/hackathon/performance", params={"identifiers": symbol})
         return 'asddasasd'
         return res.json()
 
