@@ -21,6 +21,9 @@ def index():
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        redirect(url_for('index')) 
+    
     if request.method == 'POST':
         if mongo.find_user(request.form['username']):
             session['username'] = request.form['username']
@@ -40,6 +43,8 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if 'username' in session:
+        redirect(url_for('index')) 
     if request.method == 'POST':
         user_data = request.form.to_dict()
         user_data.pop('password')
