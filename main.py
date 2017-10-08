@@ -81,7 +81,7 @@ def groups():
     return render_template('groups.html')
 
 @app.route('/vote/<stock_id>/<buy>/<approve>', methods=['GET', 'POST'])
-def vote():
+def vote(stock_id, buy, approve):
     return 'asd'
     if request.method == 'POST':
         return(stock_id, buy, approve)
