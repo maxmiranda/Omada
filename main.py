@@ -84,8 +84,11 @@ def propose():
         '''
 
     return 'You must login in order to propose a trade.'
-        
-    
+
+@app.route('/proposals', methods=['GET'])
+def proposals():
+    return render_template('proposals.html')
+
 
 @app.route('/stock', methods=['GET', 'POST'])
 def stock():

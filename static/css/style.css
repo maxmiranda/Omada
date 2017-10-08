@@ -25,6 +25,7 @@ body {
   font-style: normal;
   font-weight: 300;
   line-height: 24px;
+  background-color: #fcfcfc;
 }
 .img{
     max-width: 100%;
@@ -204,7 +205,7 @@ a.button-small::after {
     -o-transition: all 0.4s ease-in-out;
 }
 a.button-border span,
-a.button-border-white span,
+a.button-border-#fcfcfc span,
 input,
 select,
 textarea {
@@ -507,7 +508,7 @@ box-sizing: border-box;
 /* Set a style for all buttons */
 button {
 background-color: #4CAF50;
-color: white;
+color: #fcfcfc;
 padding: 14px 20px;
 margin: 8px 0;
 border: none;
@@ -581,6 +582,34 @@ display: table;
  width: 100%;
 }
 }
+
+/*-------------------------------------------------------
+   PROPOSALS
+---------------------------------------------------------*/
+#proposals .make_proposal_button {
+  font-family: Hiragino Sans;
+  font-weight: 300px;
+  font-size: 22px;
+  color: #2494F0;
+  float: right;
+}
+
+#proposals h3 {
+  font-family: Raleway;
+  font-weight: bold;
+  font-size: 29px;
+  float: left;
+}
+
+.most_recent_prop {
+  height: 350px;
+  border: solid;
+  border-color: #54AAF0;
+  border-radius: 4px;
+}
+
+
+
 /*-------------------------------------------------------
     BACKGROUND COLOR VARIATION FOR SECTION
 ---------------------------------------------------------*/
@@ -588,6 +617,174 @@ display: table;
 .gray-bg { background: #f6f6f6; }
 .transparent-bg { background: transparent; }
 
+
+/*-------------------------------------------------------
+    MENU
+---------------------------------------------------------*/
+
+#selected_menu_item {
+  font-weight: 400;
+}
+.nav li a {
+  color: #fcfcfc !important;
+}
+.header {
+  background: #2494F0;
+  width: 100%;
+  top: 0;
+  height: 60px;
+}
+
+.logo {
+  float: left;
+  font-family: "Raleway";
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-left: 30px;
+  color: #fcfcfc;
+}
+
+a {
+  text-decoration: none;
+}
+
+.regular_menu li {
+
+  list-style: none;
+  font-family: "Raleway";
+  font-weight: lighter;
+  font-size: 17px;
+  float: left;
+  margin: 30px;
+  margin-top: 5px;
+  padding: 0px;
+  padding-right: 65px;
+  border-right: solid 1px #ffffff;
+
+
+}
+li:last-child{
+  list-style: none;
+  font-family: "Raleway";
+  font-weight: lighter;
+  float: left;
+  margin: 30px;
+  margin-top: 5px;
+  padding: 0px;
+  border-right: none;
+}
+
+.nav {
+  float: right;
+  margin-top: 12px;
+}
+
+.container2 {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #fcfcfc;
+    margin: 6px 10px;
+    transition: 0.4s;
+}
+.bar1 {
+  margin-top: 17px;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    float: right;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #222222;
+    font: "Raleway";
+    padding: 30px 30px;
+    margin-left: 25px;
+    width: 60px;
+    border-bottom: solid 1px #000000;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:last-child{
+  color: black;
+  padding: 30px 30px;
+  border-bottom: none;
+  text-decoration: none;
+  display: block;
+}
+
+@media (max-width: 828px) {
+  .nav {
+    margin-top: 0;
+  }
+  .regular_menu {
+    display:none;
+  }
+  .dropdown_menu {
+    display:block;
+  }
+
+}
+
+@media (min-width: 829px) {
+  .regular_menu {
+    display:block;
+  }
+  .dropdown_menu {
+    display:none;
+  }
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 
 /*-------------------------------------------------------
     FOOTER
