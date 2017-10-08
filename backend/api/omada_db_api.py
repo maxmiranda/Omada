@@ -1,6 +1,6 @@
 """MongoDB """
 
-from pymongo import MongoClient, ReturnDocument
+from pymongo import MongoClient
 
 class OmadaDB(object):
     """Class docstring"""
@@ -54,5 +54,4 @@ class OmadaDB(object):
 
         return update_stocks(
             stock_id, 
-            {'$inc': {vote_str: 1}}, 
-            return_document=ReturnDocument.AFTER)
+            {'$inc': {vote_str: 1}})
