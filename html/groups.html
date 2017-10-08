@@ -19,7 +19,7 @@
           <ul>
             <li><a id = "selected_menu_item" href="/group">Group   </a></li>
             <li><a href="/proposals">Proposals   </a></li>
-            <li><a href="/portfolio">Portfolio   </a></li>
+            <li><a href="/live">Live   </a></li>
             <li><a href="/account">Account   </a></li>
             <li><a href = "/search"> <img class = "invert" id = "searchglass"src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
           </ul>
@@ -62,45 +62,45 @@
         <div id = "me" class = "row">
           <img class = "user_photo" src = "{{ url_for('static', filename='img/max.png') }}">
           <div><a href = "/account"> Me </a> </div>
-          <div>$40.00</div>
-          <div>+$7.60</div>
-          <div>$20.00</div>
+          <div>$403.36</div>
+          <div class = "green">+ $70.60</div>
+          <div>$382.87</div>
           <div>38.7%</div>
-          <div>9/17/17</div>
-          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+          <div>9/15/17</div>
+          <div><a href = "/proposals"> Sell 1 GOOGL </a></div>
         </div>
         <div class = "row">
             <img class = "user_photo" src = "{{ url_for('static', filename='img/daniel.png') }}">
           <div>Daniel Andrews</div>
-          <div>$40.00</div>
-          <div>+$7.60</div>
-          <div>$20.00</div>
+          <div>$428.61</div>
+          <div class = "green">+ $277.60</div>
+          <div>$237.20</div>
           <div>24.0%</div>
-          <div>9/15/17</div>
-          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+          <div>9/16/17</div>
+          <div><a href = "/proposals"> Buy 5 TSLA </a></div>
         </div>
         <div class = "row">
             <img class = "user_photo" src = "{{ url_for('static', filename='img/jeremy.png') }}">
           <div >Jeremy Barenholtz</div>
-          <div>$40.00</div>
-          <div >+$7.60</div>
-          <div>$20.00</div>
+          <div>$80.54</div>
+          <div class = "green">+ $148.60</div>
+          <div>$198.23</div>
           <div>20.2%</div>
-          <div>9/21/17</div>
-          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+          <div>9/17/17</div>
+          <div><a href = "/proposals"> Buy 2 F </a></div>
         </div>
         <div class = "row">
           <img class = "user_photo" src = "{{ url_for('static', filename='img/robert.png') }}">
           <div >Robert Iancu</div>
-          <div>$40.00</div>
-          <div >+$7.60</div>
-          <div>$20.00</div>
+          <div>$42.21</div>
+          <div class = "red">- $23.60</div>
+          <div>$147.77</div>
           <div>17.1%</div>
           <div>9/18/17</div>
-          <div><a href = "/proposals"> Buy 4 MSFT </a></div>
+          <div><a href = "/proposals"> Sell 2 AAPL </a></div>
         </div>
       </div>
-    <button id="invest_more">Invest More</button>
+    <button onclick = "window.location.href='/proposals'" id="invest_more">Invest More</button>
   </div>
 </div>
 </body>

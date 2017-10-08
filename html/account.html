@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" href="favicon.png">
     <title> Account </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body>
-    <img  class = "accountpage" src="https://i.imgur.com/vM8YMe6.png" border="0"/>
+    <div class="header">
+      <h1 class = "logo">Omada</h1>
+        <div class = "nav">
+          <div class="regular_menu">
+            <ul>
+              <li><a href="/groups">Group   </a></li>
+              <li><a href="/proposals">Proposals   </a></li>
+              <li><a href="/live">Live   </a></li>
+              <li><a id = "selected_menu_item" href="/account">Account</a></li>
+              <li><a href = "/search"> <img class = "invert" id = "searchglass" src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
+            </ul>
+          </div>
+            <div class="dropdown_menu" onclick="drop(this)">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Group</a>
+                <a id = "selected_menu_item" href="#about">Proposals</a>
+                <a href="#contact">Portfolio</a>
+                <a href="#contact">Account</a>
+              </div>
+          </div>
+        </div>
+          <script>
+          function drop(x) {
+            x.classList.toggle("change");
+            document.getElementById("myDropdown").classList.toggle("show");
+          }
+        </script>
+    </div>
+    <img  class = "accountpage" src="https://i.imgur.com/doI2XCw.png" border="0"/>
   </body>
 </html>
