@@ -87,10 +87,11 @@ th {
       <div class = "nav">
         <div class="regular_menu">
           <ul>
-            <li><a id = "selected_menu_item" href="#">Group   </a></li>
-            <li><a href="proposals">Proposals   </a></li>
-            <li><a href="portfolio">Portfolio   </a></li>
-            <li><a href="account">Account   </a></li>
+            <li><a id = "selected_menu_item" href="/group">Group   </a></li>
+            <li><a href="/proposals">Proposals   </a></li>
+            <li><a href="/portfolio">Portfolio   </a></li>
+            <li><a href="/account">Account   </a></li>
+            <li><a href = "/search"> <img class = "invert" id = "searchglass"src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
           </ul>
         </div>
           <div class="dropdown_menu" onclick="drop(this)">

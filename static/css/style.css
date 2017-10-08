@@ -745,6 +745,7 @@ display: table;
     flex-direction: column;
 }
 
+
 /*-------------------------------------------------------
     BACKGROUND COLOR VARIATION FOR SECTION
 ---------------------------------------------------------*/
@@ -756,6 +757,17 @@ display: table;
 /*-------------------------------------------------------
     MENU
 ---------------------------------------------------------*/
+
+#searchglass {
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+}
+.invert {-webkit-filter: invert(100%); filter: invert(100%);}
+
+#mainsearch {
+  margin-top:60px;
+}
 
 #selected_menu_item {
   font-weight: 400;

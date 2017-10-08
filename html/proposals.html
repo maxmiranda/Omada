@@ -5,8 +5,6 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta charset="utf-8">
     <title>Proposals</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
@@ -20,10 +18,11 @@
         <div class = "nav">
           <div class="regular_menu">
             <ul>
-              <li><a href="#">Group   </a></li>
+              <li><a href="/groups">Group   </a></li>
               <li><a id = "selected_menu_item" href="#">Proposals   </a></li>
-              <li><a href="#">Portfolio   </a></li>
-              <li><a href="#">Account   </a></li>
+              <li><a href="/portfolio">Portfolio   </a></li>
+              <li><a href="/account">Account   </a></li>
+              <li><a href = "/search"> <img class = "invert" id = "searchglass"src = "{{ url_for('static', filename='img/search.png') }}"/> </a></li>
             </ul>
           </div>
             <div class="dropdown_menu" onclick="drop(this)">
